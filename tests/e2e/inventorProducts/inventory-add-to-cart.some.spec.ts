@@ -9,7 +9,7 @@ import { PRODUCTS } from '../../../src/data/products';
 test.describe('Full Coverage Shopping Cart - Add to Cart', () => {
   const userStandard = getUserByRole('standard');
 
-  test.beforeAll(async ({ page }) => {
+   test.beforeEach(async ({ page }) => {  // Changed from beforeAll to beforeEach
     logger.info('Before each test URL will run');
     await page.goto('/');
     const loginPage = new LoginPage(page);

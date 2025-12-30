@@ -13,7 +13,7 @@ test.describe('Full Log in Coverage - Smoke Test', () => {
   const userStandard = getUserByRole('standard');
   const userLocked = getUserByRole('locked');
 
-  test.beforeAll(async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     //navigate to url before each test
     logger.info('Before Each test URL WILL RUN');
     await page.goto('/');

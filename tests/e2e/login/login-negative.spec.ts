@@ -10,7 +10,7 @@ test.describe('Full Log in Coverage - Negative Test', () => {
   //expected different test and validation for both users , creating two different variables - NO LOOP
   const userStandard = getUserByRole('standard');
 
-  test.beforeAll(async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     //navigate to url before each test
     logger.info('Before Each test URL WILL RUN');
     await page.goto('/');

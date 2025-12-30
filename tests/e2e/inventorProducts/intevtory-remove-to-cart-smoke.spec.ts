@@ -8,13 +8,12 @@ import { logger } from '../../../utils/logger';
 test.describe('Shopping Cart - Remove from Cart', () => {
   const userStandard = getUserByRole('standard');
 
-  test.beforeAll(async ({ page }) => {
-    //navigate to url before each test
-    logger.info('Before Each test URL WILL RUN');
+ test.beforeEach(async ({ page }) => {  // Changed from beforeAll to beforeEach
+    logger.info('Before each test URL will run');
     await page.goto('/');
-    const login = new LoginPage(page);
-    login.login(userStandard.username, userStandard.password);
-    expect(page).toHaveURL(ROUTES.INVENTORY);
+    const loginPage = new LoginPage(page);
+    await loginPage.login(userStandard.username, userStandard.password);
+    await expect(page).toHaveURL(ROUTES.INVENTORY);
     logger.success(`Log in Done - User navigated to - ${ROUTES.INVENTORY}`);
   });
 
