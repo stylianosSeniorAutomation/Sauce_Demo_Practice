@@ -2,7 +2,7 @@
   "name": "pw-framework",
   "version": "1.0.0",
   "description": "Playwright test framework",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
