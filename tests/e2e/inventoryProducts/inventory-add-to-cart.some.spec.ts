@@ -9,11 +9,11 @@ import { PRODUCTS } from '../../../src/data/products';
 test.describe('Full Coverage Shopping Cart - Add to Cart', () => {
   const userStandard = getUserByRole('standard');
 
-  test.beforeAll(async ({ page }) => {
+   test.beforeEach(async ({ page }) => {  // Changed from beforeAll to beforeEach
     logger.info('Before each test URL will run');
     await page.goto('/');
     const loginPage = new LoginPage(page);
-    await loginPage.login(userStandard.username, userStandard.password);
+    await loginPage.loggedIN(userStandard.username, userStandard.password);
     await expect(page).toHaveURL(ROUTES.INVENTORY);
     logger.success(`Log in Done - User navigated to - ${ROUTES.INVENTORY}`);
   });
@@ -21,7 +21,7 @@ test.describe('Full Coverage Shopping Cart - Add to Cart', () => {
   test('Smoke - AddToCart-01- Add single product to cart', async ({ page }) => {
     const inventoryPage = new InventoryPage(page);
     await inventoryPage.addProductToCart('Sauce Labs Bike Light');
-    expect(inventoryPage.cartIcon).toHaveText('1');
+    await expect(inventoryPage.cartIcon).toHaveText('1');
     logger.success('Product added to cart - Cart icon updated correctly');
 
     await inventoryPage.getCartIconClicked();
@@ -33,7 +33,7 @@ test.describe('Full Coverage Shopping Cart - Add to Cart', () => {
     const inventoryPage = new InventoryPage(page);
     await inventoryPage.addProductToCart('Sauce Labs Backpack');
     await inventoryPage.addProductToCart('Sauce Labs Bolt T-Shirt');
-    expect(inventoryPage.cartIcon).toHaveText('2');
+    await expect(inventoryPage.cartIcon).toHaveText('2');
     logger.success('Products added to cart - Cart icon   updated correctly');
 
     await inventoryPage.getCartIconClicked();

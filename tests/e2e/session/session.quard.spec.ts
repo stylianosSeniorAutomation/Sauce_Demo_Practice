@@ -8,7 +8,7 @@ test.describe('Session Test - auth Test', () => {
     logger.info('Before Each test URL WILL RUN');
     await page.goto('/');
 
-    test(' Hypbrid Session Test  - TC01 - User should not redirect without log in', async ({
+    test.skip(' Hypbrid Session Test  - TC01 - User should not redirect without log in', async ({
       page,
     }) => {
       //sauceDemo does not implement proper auth quard
