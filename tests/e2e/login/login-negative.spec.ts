@@ -19,7 +19,7 @@ test.describe('Full Log in Coverage - Negative Test', () => {
 
   test('Negative-Login-01- Empty username shows ERROR', async ({ page }) => {
     const login = new LoginPage(page);
-    await login.loggedIN('', userStandard.password);
+    await login.logIn('', userStandard.password);
     await  expect(page).toHaveURL(ROUTES.NO_REDIRECT);
     await expect(login.getError()).toContainText(ERRORMESSAGES.emptyUsernameError);
     await expect(page).toHaveURL(ROUTES.NO_REDIRECT);
@@ -28,7 +28,7 @@ test.describe('Full Log in Coverage - Negative Test', () => {
   //separating password and username error scenario as errors are displayed different - both need to be covered
   test('Negative-Login-02- Empty password shows ERROR', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.loggedIN(userStandard.username, '');
+    await loginPage.logIn(userStandard.username, '');
     await expect(page).toHaveURL(ROUTES.NO_REDIRECT);
     await expect(loginPage.getError()).toContainText(ERRORMESSAGES.emptyPasswordError);
     await expect(page).toHaveURL(ROUTES.NO_REDIRECT);
@@ -36,7 +36,7 @@ test.describe('Full Log in Coverage - Negative Test', () => {
   });
   test('Negative-Login-03- Invalid username and password shows ERROR', async ({ page }) => {
     const loginPage = new LoginPage(page);
-   await loginPage.loggedIN('invalidusername', '1234');
+   await loginPage.logIn('invalidusername', '1234');
    await expect(page).toHaveURL(ROUTES.NO_REDIRECT);
    await expect(loginPage.getError()).toContainText(ERRORMESSAGES.invalidCredentials);
    await expect(page).toHaveURL(ROUTES.NO_REDIRECT);

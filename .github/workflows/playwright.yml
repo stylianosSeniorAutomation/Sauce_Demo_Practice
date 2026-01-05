@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v6
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
+        if: failure() || success() # or other appropriate condition
         with:
           base: main
           title: 'Automated PR'

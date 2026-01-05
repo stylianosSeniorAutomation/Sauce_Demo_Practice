@@ -21,14 +21,14 @@ test.describe('Full Log in Coverage - Smoke Test', () => {
 
   test('Smoke-Login-01-Valid login', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.loggedIN(userStandard.username, userStandard.password);
+    await loginPage.logIn(userStandard.username, userStandard.password);
     await expect(page).toHaveURL(ROUTES.INVENTORY);
     logger.success(`Log in Done - User navigated to - ${ROUTES.INVENTORY}`);
 
   });
   test('Smoke-Login-02- Locked user is blocked', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.loggedIN(userLocked.username, userLocked.password);
+    await loginPage.logIn(userLocked.username, userLocked.password);
     await expect(loginPage.getError()).toContainText(ERRORMESSAGES.lockedError);
     await expect(page).toHaveURL(ROUTES.NO_REDIRECT);
     logger.success('Locked User expeted to be blocked for log in');
