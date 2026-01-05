@@ -6,7 +6,9 @@
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "test:dev": "ENV=development npx playwright test",
+    "test:staging": "ENV=staging npx playwright test"
   },
   "keywords": [
     "playwright",
